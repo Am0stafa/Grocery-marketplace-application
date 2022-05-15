@@ -1,0 +1,11 @@
+{
+  "name": "rabbit",
+  "version": "1.0.0",
+  "description": "grocery marketplace",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
