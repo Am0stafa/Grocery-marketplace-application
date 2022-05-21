@@ -10,6 +10,6 @@ router
 
 router.route("/:id").patch(orderController.updateOrder);
 
-router.route("cancel/:id", orderController.cancelOrder);
+router.route("/:id/cancel", orderController.cancelOrder);
 
 module.exports = router;

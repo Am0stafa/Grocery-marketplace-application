@@ -74,3 +74,11 @@ exports.cancelOrder = async (req, res) => {
     });
   } catch (error) {}
 };
+
+exports.getOrderStatus = async (req, res)=>{
+  try {
+    
+  } catch (error) {
+    
+  }
+};

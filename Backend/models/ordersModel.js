@@ -6,14 +6,10 @@ const orderSchema = new mongoose.Schema({
         required: true, 
         default: "CREATED"
     },
-    name:{
-        type: [String],
-        required: true
-    },
-    quantity:{
-        type: [Number],
-        required: true
-    }
+    items: [{
+        itemId: mongoose.Types.ObjectId,
+        itemCount: Number
+    }]
     
 }
 );
