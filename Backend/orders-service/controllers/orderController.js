@@ -45,8 +45,9 @@ exports.updateOrder = async (req, res) => {
     const updateOrder = await orders.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true }
+      { runValidators: true }
     );
+    
     res.status(200).json({
       status: "Successfully updated product.",
       data: { updateOrder },
