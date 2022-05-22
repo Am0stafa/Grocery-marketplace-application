@@ -1,7 +1,7 @@
 {
-  "name": "rabbit",
+  "name": "rabbit-products-service",
   "version": "1.0.0",
-  "description": "grocery marketplace",
+  "description": "products service",
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js"
