@@ -7,7 +7,7 @@ const router = express.Router();
 router
   .route("/")
   .get(shipmentController.getAll)
-  .post(shipmentController.createShipment)
-  .delete(shipmentController.deleteShipment); // should be called automatically when an order is ready
+  .post(shipmentController.createShipment); // should be called automatically when an order is ready 
 
+router.route("/:id/delete").delete(shipmentController.deleteShipment);
 module.exports = router;
