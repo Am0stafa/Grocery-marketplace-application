@@ -1,6 +1,6 @@
 //! security routes middlewares
 const express = require('express');
-const shipmentsRoute = require('./routes/shipmentRoutes');
+const shipmentRoute = require('./routes/shipmentRoutes');
 const app = express();
 //! 1)security
 
@@ -12,6 +12,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //! 3) routes
-// app.use("/api/v1/shipments", shipmentsRoute);
+app.use("/api/v1/shipments", shipmentRoute);
 
 module.exports = app;
