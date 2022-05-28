@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
     }
 }
 );
-
+//! add validators
 const order = mongoose.model('orders' , orderSchema);
 
 //? export model

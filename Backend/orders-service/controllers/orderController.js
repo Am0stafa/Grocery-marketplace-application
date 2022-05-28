@@ -27,6 +27,7 @@ exports.getAll = async (req, res) => {
 };
 
 exports.createOrder = async (req, res) => {
+//won't take status, check that item exists and is in stock in the other service
   try {
     const newOrder = await orders.create(req.body);
     res.status(201).json({
@@ -62,6 +63,7 @@ exports.updateOrder = async (req, res) => {
 };
 
 exports.cancelOrder = async (req, res) => {
+  // TODO: shouldn't take body, should update status to cancelled. If order is shipped it can't be cancelled.
   try {
     const cancelledOrder = await orders.findByIdAndUpdate(
       req.params.id,
