@@ -1,0 +1,9 @@
+name,description,quantity,price,image,isOutOfStock
+apple,an apple,90,3,linktoimage,0
+milk,milk bottle,115,12,linktomilkimage,0
+juice,juice bottle,15,23,linktojuiceimage,0
+chicken,whole chicken,20,120,linktochickenimage,0
+honey,jar of honey,3,50,linktohoneyimage,0
+corn,corn cob,0,7,linktocornimage,1
+ketchup,bottle of ketchup,12,25,linktokeutchupimage,0
+cobra car,how do you turn this on,0,1,monkineedamonk,1

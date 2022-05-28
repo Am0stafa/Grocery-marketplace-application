@@ -16,7 +16,7 @@ router
     .delete(productController.deleteProduct)
     .patch(productController.updateProduct)
 
-
+router.route("/fill-inventory").put(productController.fillInventory);
 
 
 
