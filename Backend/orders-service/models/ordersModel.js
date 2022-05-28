@@ -17,12 +17,25 @@ const orderSchema = new mongoose.Schema({
         required: true, 
         default: "CREATED"
     },
-    items: {
-        type: [orderItemSchema],
-        required: true
+    name:{
+        type: String,
+        required:[true,"A product must have a name"]
+    },
+    description:{
+        type: String,
+        required:[true,"A product must have a description"]
+    },
+    quantity:{
+        type: Number,
+        required:[true,"A product must have a quantity"]
+    },
+    price:{
+        type: Number,
+        required:[true,"A product must have a price"]
     }
 }
 );
+
 //! add validators
 const order = mongoose.model('orders' , orderSchema);
 

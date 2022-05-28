@@ -29,7 +29,7 @@ exports.createShipment = async (req, res) => {
   try {
     const newShipment = await shipment.create(req.body);
     res.status(201).json({
-      status: "Successfuly created new shipment",
+      status: "Successfully created new shipment",
       data: { newShipment },
     });
   } catch (error) {

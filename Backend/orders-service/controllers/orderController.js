@@ -1,7 +1,7 @@
 const { findById } = require("../models/ordersModel");
 const orders = require("../models/ordersModel");
 const APIFeatures = require("../utils/apiFeatures");
-
+const Email = require("../utils/email")
 exports.getAll = async (req, res) => {
   try {
     const features = new APIFeatures(orders.find(), req.query)
@@ -13,7 +13,7 @@ exports.getAll = async (req, res) => {
     const allOrders = await features.query;
 
     res.status(200).json({
-      status: "sucess",
+      status: "success",
       data: {
         allOrders,
       },
@@ -26,9 +26,29 @@ exports.getAll = async (req, res) => {
   }
 };
 
+exports.provideEmailAndName = async (req, res) => {
+try {
+  const { email, name } = req.body;
+        // TODO: will we implement the frontend to provide the path
+  await new Email(email,name, '/').sendWelcome();
+
+  res.status(200).json({ status: 'success' }); 
+  
+  
+}  catch (error) {
+  res.status(404).json({
+    status: "failed",
+    message: err.message,
+  });
+}
+
+}
+
+
 exports.createOrder = async (req, res) => {
 //won't take status, check that item exists and is in stock in the other service
   try {
+  
     const newOrder = await orders.create(req.body);
     res.status(201).json({
       status: "Successfully created order.",
@@ -63,20 +83,30 @@ exports.updateOrder = async (req, res) => {
 };
 
 exports.cancelOrder = async (req, res) => {
-  // TODO: shouldn't take body, should update status to cancelled. If order is shipped it can't be cancelled.
+
   try {
-    const cancelledOrder = await orders.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { runValidators: true }
-    );
+  
+    const cancelledOrder = await orders.findById(req.params.id);
+    
+    if (!cancelledOrder) throw new Error('no order with this id')
+    
+    
+    cancelledOrder.orderStatus = "cancelled";
+    
+    await orders.save();
+    
     res.status(200).json({
       status: "Successfully cancelled order",
       data: {
         cancelledOrder,
       },
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+  }
 };
 
 exports.getOrderStatus = async (req, res) => {
