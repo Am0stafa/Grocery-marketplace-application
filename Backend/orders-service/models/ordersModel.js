@@ -17,28 +17,13 @@ const orderSchema = new mongoose.Schema({
         required: true, 
         default: "CREATED"
     },
-    name:{
-        type: String,
-        required:[true,"A product must have a name"]
-    },
-    description:{
-        type: String,
-        required:[true,"A product must have a description"]
-    },
-    quantity:{
-        type: Number,
-        required:[true,"A product must have a quantity"]
-    },
-    price:{
-        type: Number,
-        required:[true,"A product must have a price"]
+    items: {
+        type: [orderItemSchema],
+        required: true
     }
-}
-);
+});
 
 //! add validators
 const order = mongoose.model('orders' , orderSchema);
-
-//? export model
 
 module.exports = order;
