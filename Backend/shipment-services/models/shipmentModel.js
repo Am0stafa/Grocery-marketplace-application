@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 
 const shipmentSchema = new mongoose.Schema({
+    orderID:{
+        type: mongoose.Types.ObjectId,
+        required: true
+    },
     shipmentStatus:{
         type:String,
         default:"CREATED",
+        required: true
     },
     address:{
         type:String,
-        require:true
+        required:true
     }
-    
 });
 
 

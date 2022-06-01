@@ -27,7 +27,6 @@ const productsSchema = new mongoose.Schema({
         type: Boolean,
         default : false
     }
-    
 })
 
 //? middleware
