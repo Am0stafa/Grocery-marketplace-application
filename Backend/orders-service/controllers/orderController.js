@@ -2,6 +2,9 @@ const { findById } = require("../models/ordersModel");
 const orders = require("../models/ordersModel");
 const APIFeatures = require("../utils/apiFeatures");
 const Email = require("../utils/email")
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
+
 exports.getAll = async (req, res) => {
   try {
     const features = new APIFeatures(orders.find(), req.query)
@@ -119,3 +122,47 @@ exports.getOrderStatus = async (req, res) => {
     res.status(400).json({ status: "Bad request." });
   }
 };
+
+exports.checkoutSession = async (req, res) => {
+  try{
+    //! 1) find the order
+    const order = await orders.findById(req.params.orderId)
+    
+    const session = await stripe.checkout.session.create({
+      payment_method_types:['card'],
+      success_url:`http://localhost:3000/myorder`,
+      cancel_url:`http://localhost:3000/`,
+      
+      client_reference_id: req.params.orderId,
+      // TODO want to map over yhe order.itemsa and generate and array of name amount and price..
+      line_items: [
+        {
+          name: `${order._id}`,
+          amount: 800,
+          currency: 'usd',
+          quantity: 99
+        }
+      ]
+  });
+
+    res.status(200).json({
+        status: 'success',
+        session
+    });
+        
+    
+
+    
+    
+  }catch (error) {
+    
+      res.status(404).json({
+      status: "failed",
+      message: err.message,
+    });
+        
+  }
+
+
+
+}

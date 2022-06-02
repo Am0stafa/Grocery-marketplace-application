@@ -1,7 +1,7 @@
 # Marketplace
-- Get all orders -> calls **`inventory service`**
+- Get all orders -> calls **`inventory service`** DONE
 - Get order status -> calls **`shipment service`**
-- Submit order -> calls **`orders service`**
+- Submit order -> calls **`orders service`** DONE
 
 # Orders
 - `POST /orders` -> create payment **`through payment service`**
@@ -10,7 +10,7 @@
 - `POST /payment`
 
 # Products/Inventory
-- `GET /products`
+- `GET /products` DONE
 
 # Shipment
 - `GET /shipments/:orderId`
