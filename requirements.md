@@ -1,5 +1,5 @@
 # Marketplace
-- Get all orders -> calls **`inventory service`**
+- Get all orders -> calls **`inventory service`** DONE
 - Get order status -> calls **`shipment service`**
 - Submit order -> calls **`orders service`**
 
