@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const orderItemSchema = new mongoose.Schema({
     itemId: {
         type: mongoose.Types.ObjectId,
+        ref:'products',
         required: true
     },
     itemCount: {
@@ -23,7 +24,14 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
+orderSchema.pre(/^find/,function(next){
+    this.populate('items')
+
+    next();
+})
+
 //! add validators
 const order = mongoose.model('orders' , orderSchema);
+
 
 module.exports = order;

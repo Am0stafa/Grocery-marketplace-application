@@ -13,4 +13,9 @@ router.route("/:id").patch(orderController.updateOrder);
 router.route("/:id/cancel", orderController.cancelOrder);
 router.route("/:id/status").get(orderController.getOrderStatus);
 
+
+
+router.route('/checkout-session/:orderId', orderController.checkoutSession)
+
+
 module.exports = router;
