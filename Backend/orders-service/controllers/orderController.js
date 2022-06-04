@@ -127,6 +127,13 @@ exports.checkoutSession = async (req, res) => {
   try{
     //! 1) find the order
     const order = await orders.findById(req.params.orderId)
+                        
+    const totalCount = order.items.reduce((sum, item) => sum + item.itemCount,0)
+    
+    
+    const ids = order.items.map(item => item.itemId)
+    
+    // TODO fetch price
     
     const session = await stripe.checkout.session.create({
       payment_method_types:['card'],
@@ -134,13 +141,12 @@ exports.checkoutSession = async (req, res) => {
       cancel_url:`http://localhost:3000/`,
       
       client_reference_id: req.params.orderId,
-      // TODO want to map over yhe order.itemsa and generate and array of name amount and price..
       line_items: [
         {
           name: `${order._id}`,
           amount: 800,
           currency: 'usd',
-          quantity: 99
+          quantity: `${totalCount}`
         }
       ]
   });
