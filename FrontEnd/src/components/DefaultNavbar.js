@@ -31,8 +31,7 @@ export default function DefaultNavbar() {
                         <div className="flex flex-col z-50 lg:flex-row lg:items-center">
    
                             <NavLink
-                                href="#"
-                                target="_blank"
+                                href="/myorder"
                                 rel="noreferrer"
                                 ripple="light"
                             >
