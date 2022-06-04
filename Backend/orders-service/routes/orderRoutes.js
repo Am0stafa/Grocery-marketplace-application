@@ -8,7 +8,7 @@ router
   .get(orderController.getAll)
   .post(orderController.createOrder);
 
-router.route("/:id").patch(orderController.updateOrder);
+router.route("/:id").get(orderController.getOrder).patch(orderController.updateOrder);
 
 router.route("/:id/cancel", orderController.cancelOrder);
 router.route("/:id/status").get(orderController.getOrderStatus);
