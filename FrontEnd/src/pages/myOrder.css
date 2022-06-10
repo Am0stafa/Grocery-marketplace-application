@@ -1,0 +1,70 @@
+body {
+    background-color: lightyellow;
+  }
+  button, input, optgroup, select, textarea {
+    padding: 15px;
+    line-height: inherit;
+    color: inherit;
+}
+.bttn{
+	background-color:black; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+.myform{
+	width: 100%;
+	padding-left: 450px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	padding-top: 50px;
+}
+.orders{
+	font-weight: bold;
+	margin-top: 30px;
+	font-size: 40px;
+	padding-left: 15px;
+	background-color: black;
+	color: white;
+
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+
+  th,
+td {
+  border: 1px solid #ffffff;
+  text-align: left;
+  padding: 8px;
+  font-size: 32px;
+}
+
+th {
+  background-color: rgb(250, 219, 117);
+}
+
+td {
+  background-color: rgb(250, 219, 117);
+}
+.buttonsInTable{
+	background-color:black;
+	color: white;
+}
+
+.Title{
+	font-weight: bold;
+	margin-top: 30px;
+	font-size: 40px;
+	padding-left: 15px;
+	color: black;
+	text-decoration: underline black double;
+	
+	
+
+}
