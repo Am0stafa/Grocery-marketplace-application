@@ -12,10 +12,9 @@ export function APIContextProvider({ children }) {
   useEffect(() => {
     async function fetchData() {
     try{
-      const  data  = await axios.get(
+      const data  = await axios.get(
         `https://inventory-service.vercel.app/api/v1/products`
       );
-      console.log(data);
       setProducts(data);
     } catch (error) {
       console.log(error);
