@@ -15,7 +15,8 @@ const orderItemSchema = new mongoose.Schema({
 const orderSchema = new mongoose.Schema({
     orderStatus:{
         type: String,
-        required: true, 
+        required: true,
+        enum: ['CREATED', 'PROCESSING', 'FULFILLED', 'CANCELED'], 
         default: "CREATED"
     },
     items: {
