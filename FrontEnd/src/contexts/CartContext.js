@@ -31,6 +31,10 @@ const CartContextProvider = ({children}) => {
     }
 
     const handleCheckout = () => {
+    //! 1)create order
+    //! 2)call stripe api in order
+    //! 3)if successful create shipping AND send email with shipping id 
+    //! 4)dispatch
         console.log('CHECKOUT', state);
         dispatch({type: 'CHECKOUT'})
     }
