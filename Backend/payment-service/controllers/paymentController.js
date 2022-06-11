@@ -2,6 +2,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.createPayment = async (req, res) => {
   // faking a successful payment for now
+  const { amount } = req.body;
+  console.log(amount);
+   
   return res.status(200).send();
 
   // try {
