@@ -11,6 +11,7 @@ const ProductsGrid = () => {
     // const  products  = useAPI();
     // console.log(products)
     const [products,setProducts] = useState([]);
+    const [search,setSearch] = useState([]);
     useEffect(() => {
         async function fetchData() {
         try{
@@ -18,13 +19,23 @@ const ProductsGrid = () => {
             `https://inventory-service.vercel.app/api/v1/products`
           );
           setProducts(data.data.data.allProducts);
-          console.log(data.data)
+          setSearch(data.data.data.allProducts)
         } catch (error) {
           console.log(error);
         }
         }
         fetchData();
       }, []);
+
+    const onchange = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+        if(e.target.value !== "")
+            setSearch(products.filter((p)=> p.name === e.target.value))
+        else
+        setSearch([...products])
+        
+    }
 
     return ( 
         <div className={styles.p__container}>
@@ -36,15 +47,15 @@ const ProductsGrid = () => {
                 </div>
                 <div className="col-sm-4">
                     <div className="form-group">
-                        <input type="text" name="" placeholder="Search product" className="form-control" id=""/>
+                        <input type="text" name="" placeholder="Search product" className="form-control" id="" onChange={onchange}/>
                     </div>
                 </div>
             </div>
             <div className={styles.p__grid}>
 
                 {
-                    products.map(product => (
-                        <ProductItem key={product.id} product={product}/>
+                    search.map((product) => (
+                        <ProductItem key={product._id} product={product}/>
                     ))
                 }
 

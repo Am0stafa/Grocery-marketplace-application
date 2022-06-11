@@ -30,7 +30,7 @@ const Cart = () => {
 
                         { checkout && 
                             <div className="p-3 text-center text-success">
-                                <p>Checkout successfull</p>
+                                <p>Checkout successfully</p>
                                 <Link to="/" className="btn btn-outline-success btn-sm">BUY MORE</Link>
                             </div>
                         }
