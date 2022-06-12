@@ -11,7 +11,7 @@ const NotFound = () => {
         <Layout>
             <div style={center}>
                 <h1>404</h1>
-                <p>This is the 404 Page.</p>
+                <p>An error 404 occured</p>
             </div>
         </Layout>
      );
