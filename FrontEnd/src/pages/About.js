@@ -27,14 +27,26 @@ const About = () => {
                 const ftorder = await axios.get(
                   `https://orders-service.vercel.app/api/v1/orders/${id}`
                 );
-                console.log(ftorder.data.data)
                 const orders  = ftorder.data.data
                 const tot = orders.items.reduce(
                   (sum, item) => sum + item.itemCount,
                   0
                 );
                 setTotalCount(tot)
-            
+                const status = ship[0].allShipments[0].shipmentStatus
+                if(status ==="SHIPPED"){
+                    const emailId = {
+                      email:"a.abdo.mae@gmail.com",
+                      orderId:ship[0].allShipments[0]._id
+                  }
+                    const config = {
+                      headers: {
+                        'Content-Type': 'application/json'
+                      }
+                    }
+                    const mail2 = await axios.post('https://notification-service-psi.vercel.app/api/v1/notifications/notify-shipment', emailId, config);
+                    console.log(mail2)
+                }
             } catch (error) {
               console.log(error);
             }
