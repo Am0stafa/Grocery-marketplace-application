@@ -9,7 +9,7 @@ const ProductItem = ({product}) => {
     const { addProduct, cartItems, increase } = useCart();
 
     const isInCart = product => {
-        return !!cartItems.find(item => item.id === product.id);
+        return !!cartItems.find(item => item._id === product._id);
     }
 
     return ( 

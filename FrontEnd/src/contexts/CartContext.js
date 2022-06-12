@@ -40,28 +40,38 @@ const CartContextProvider = ({children}) => {
                 itemCount:order.quantity
         })
         return{
-            items:{
-                   ...cartI
-                }
-            }
+            items:[...cartI]
+        }
     })
     const config = {
         headers: {
           'Content-Type': 'application/json'
         }
       }
-    const res = await axios.post('https://orders-service.vercel.app/api/v1/orders/', orders, config);
-    const id = res.data.data.newOrder[0]._id
+      const itemss = orders.map((i)=>i.items)
+      const final = [].concat.apply([], itemss);
+      
+      const finalOrder = {items:final}
+     const res = await axios.post('https://orders-service.vercel.app/api/v1/orders/', finalOrder, config);
+     const id = res.data.data.newOrder._id
+     console.log(id)
+     
+    //! 3)create shipping
+    const obj = {
+        orderID:id,
+        address:"tagamog"
+    }
+    const ship = await axios.post('https://shipment-services.vercel.app/api/v1/shipments', obj, config);
+    console.log(ship.data.data.newShipment)
     
     //! 2)call stripe api in order
-        //checkout-session/:orderId
+    
         const pay = await axios.get(
             `https://orders-service.vercel.app/api/v1/orders/checkout-session/${id}`
         );
         const link = pay.data.session.url
         window.location.replace(link)
-    //! 3)create shipping
-    
+
     
     //! 4)if successful{s=true&email=mail}send email with shipping id :this will be done in home page send the last shipping created
     

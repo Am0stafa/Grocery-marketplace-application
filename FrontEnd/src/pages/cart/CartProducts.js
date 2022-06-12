@@ -81,7 +81,7 @@ const CartProducts = () => {
             <div className="card card-body border-0">
             
                 {
-                    cartItems.map(product =>  <CartItem key={product.id} product={product}/>)
+                    cartItems.map(product =>  <CartItem key={product._id} product={product}/>)
                 }
             
             </div>

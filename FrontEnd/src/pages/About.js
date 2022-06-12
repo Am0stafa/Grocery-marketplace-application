@@ -10,26 +10,31 @@ const About = () => {
     const [orderId,setOrderID] = useState('')
     const [ship, setShip] = useState([])
     const [totalCount, setTotalCount] = useState()
+    let array = [];
+
     useEffect(() => {
         async function fetchData() {
             try{
+            
               const data  = await axios.get(
                 `https://shipment-services.vercel.app/api/v1/shipments/${orderId}`
               );
-              if(data.data.data.allShipments)
-                setShip(data.data.data.allShipments);
-                const id = ship[0].orderID
-                
+              if(data.data.data)
+                array.push(data.data.data)
+                setShip([...array]);
+
+                const id = array[0].orderID
                 const ftorder = await axios.get(
                   `https://orders-service.vercel.app/api/v1/orders/${id}`
                 );
+                console.log(ftorder.data.data)
                 const orders  = ftorder.data.data
                 const tot = orders.items.reduce(
                   (sum, item) => sum + item.itemCount,
                   0
                 );
                 setTotalCount(tot)
-
+            
             } catch (error) {
               console.log(error);
             }
@@ -39,6 +44,20 @@ const About = () => {
 
     },[orderId])
 
+      const cancelOrder = async()=>{
+        const shipID = ship[0]._id
+        const cancel = await axios.get(
+          `https://shipment-services.vercel.app/api/v1/shipments/${shipID}/delete`
+        );
+        console.log(cancel.data.data)
+        let ar = [];
+        ar.push(cancel.data.data)
+        
+        setShip(ar)
+      
+      }
+      
+      
       const handleAddFormChange = (event) => {
         event.preventDefault();
     
@@ -71,7 +90,7 @@ const About = () => {
                     <td>{totalCount}</td>
                     <td>{s.address}</td>
                     <td>
-                        <button className='buttonsInTable'>Cancel</button>
+                        <button className='buttonsInTable' onClick={cancelOrder}>Cancel</button>
     
     
                     </td>
