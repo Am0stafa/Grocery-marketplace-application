@@ -1,12 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React,{useEffect} from 'react';
+import { Link,useLocation } from 'react-router-dom';
 import CartProducts from './CartProducts';
 import Layout from '../../components/Layout';
 import { useCart } from '../../hooks/useCart';
 import { formatNumber } from '../../helpers/utils';
 
+
+
+
 const Cart = () => {
 
+    
     const { total, cartItems, itemCount, clearCart, checkout, handleCheckout } = useCart();
     
     return ( 

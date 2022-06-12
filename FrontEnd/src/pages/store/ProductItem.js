@@ -30,7 +30,7 @@ const ProductItem = ({product}) => {
                 }
 
                 {
-                    <button 
+                    isInCart(product) && <button 
                     onClick={() => addProduct(product)}
                     className="btn btn-primary btn-sm">Add to cart</button>
                 }
