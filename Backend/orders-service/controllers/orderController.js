@@ -141,18 +141,18 @@ exports.checkoutSession = async (req, res) => {
 
     const ids = order.items.map((item) => item.itemId);
 
-    // TODO fetch price
+    // TODO fetch price and names
 
     const session = await stripe.checkout.session.create({
       payment_method_types: ["card"],
-      success_url: `http://localhost:3000/myorder`,
-      cancel_url: `http://localhost:3000/`,
+      success_url: `${req.protocol}://${req.get('host')}/buy=true`,
+      cancel_url: `${req.protocol}://${req.get('host')}/`,
 
       client_reference_id: req.params.orderId,
       line_items: [
         {
-          name: `${order._id}`,
-          amount: 800,
+          name: `your order`,
+          amount: 70,
           currency: "usd",
           quantity: `${totalCount}`,
         },

@@ -7,34 +7,38 @@ const About = () => {
  
 
     const [orderId,setOrderID] = useState('')
-    const [search, setSearch] = useState('')
-
-
+    const [ship, setShip] = useState([])
+    const [totalCount, setTotalCount] = useState()
     useEffect(() => {
         async function fetchData() {
             try{
               const data  = await axios.get(
                 `https://shipment-services.vercel.app/api/v1/shipments/${orderId}`
               );
-              console.log(data.data.data);
+              if(data.data.data.allShipments)
+                setShip(data.data.data.allShipments);
+                const id = ship[0].orderID
+                
+                const ftorder = await axios.get(
+                  `https://orders-service.vercel.app/api/v1/orders/${id}`
+                );
+                const orders  = ftorder.data.data
+                const tot = orders.items.reduce(
+                  (sum, item) => sum + item.itemCount,
+                  0
+                );
+                setTotalCount(tot)
+
             } catch (error) {
               console.log(error);
             }
         }
             fetchData();
-    
+            console.log("run");
+
     },[orderId])
 
-    const handleAddContactFormSubmit = (e) => {
-        e.preventDefault();
-        const ID = e.target.value;
-        setOrderID(ID)
-      
-      
-      console.log(orderId)
-      }
       const handleAddFormChange = (event) => {
-      console.log(event.target.value)
         event.preventDefault();
     
         setOrderID(event.target.value)
@@ -57,40 +61,23 @@ const About = () => {
                         <th>Cancel</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>{
+                
+                  ship && ship.map((s) => (
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>@mdo</td>
-                        <td>
-                            <button className='buttonsInTable'>Cancel</button>
-        
-        
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>bdjvo</td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button className='buttonsInTable'>Cancel</button>
-        
-        
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>hchvkwv</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button className='buttonsInTable'>Cancel</button>
-        
-        
-                        </td>
-                    </tr>
+                    <td>{s.shipmentStatus}</td>
+                    <td>{s.orderID}</td>
+                    <td>{totalCount}</td>
+                    <td>{s.address}</td>
+                    <td>
+                        <button className='buttonsInTable'>Cancel</button>
+    
+    
+                    </td>
+                  </tr>
+                  ))
+                
+                }
                 </tbody>
             </table>
         
@@ -107,7 +94,7 @@ const About = () => {
   return (
     <div className = "myOrderPage">
       <p className='Title'>My Orders:</p>
-      <form className='myform' onSubmit={handleAddContactFormSubmit}>
+      <form className='myform'>
         <input
           required placeholder="Enter Product ID"
           type="text"
@@ -116,7 +103,6 @@ const About = () => {
           value={orderId}
           onChange={handleAddFormChange}
         />
-        <button type="submit" className='bttn'>click here</button>
     </form>
 
     {menu}
