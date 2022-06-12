@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import CartProducts from './CartProducts';
 import Layout from '../../components/Layout';
 import { useCart } from '../../hooks/useCart';

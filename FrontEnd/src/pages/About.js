@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import { GitHubIcon} from '../components/icons'
 import "./myOrder.css";
 import axios from "axios";
+import styles from ".//cart/styles.css";
 const About = () => {
  
 
