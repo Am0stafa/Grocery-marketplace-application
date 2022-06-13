@@ -20,8 +20,19 @@ const ProductItem = ({product}) => {
             <p>Description:{product.description}</p>
             <h3 className="text-left">{formatNumber(product.price)}</h3>
             <div className="text-right">
-                <Link  to="/" className="btn btn-link btn-sm mr-2">Details</Link>
-
+                
+                <Link
+                    to={{
+                    pathname:`/ViewProduct/${product._id}`,
+                    className: "btn btn-link btn-sm mr-2",
+                    // state: {
+                    //     instructor_id: [{product}],
+                    // },
+                    }}>
+                    click here
+                </Link>
+                
+                
                 {
                     isInCart(product) && 
                     <button 
@@ -30,6 +41,7 @@ const ProductItem = ({product}) => {
                 }
 
                 {
+                    !isInCart(product) &&
                     <button 
                     onClick={() => addProduct(product)}
                     className="btn btn-primary btn-sm">Add to cart</button>

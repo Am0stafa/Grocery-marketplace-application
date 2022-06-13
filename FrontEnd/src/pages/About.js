@@ -128,7 +128,7 @@ const About = () => {
       <p className='Title'>My Orders:</p>
       <form className='myform'>
         <input
-          required placeholder="Enter Product ID"
+          required placeholder="Enter shipping ID"
           type="text"
           name="Order-ID"
           //required="required"

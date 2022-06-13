@@ -9,6 +9,7 @@ import Store from '../pages/store';
 import About from '../pages/About';
 import NotFound from '../pages/NotFound';
 import Cart from "../pages/cart";
+import ViewProduct from "../pages/store/ViewProduct";
 
 const Routes = () => {
   return (
@@ -17,7 +18,7 @@ const Routes = () => {
           <Route path="/My-Orders" component={About} />
           <Route exact path="/" component={Store}/>
           <Route path="/cart" component={Cart} />
-          <Route path="*" component={NotFound} />
+          <Route path="/ViewProduct/:id" component={ViewProduct} />
         </Switch>
     </Router>
   );
