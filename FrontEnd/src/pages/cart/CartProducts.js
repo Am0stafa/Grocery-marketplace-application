@@ -74,7 +74,7 @@ const CartProducts = () => {
             </div>
             <div className="app">
                 <div className="login-form">
-                    <div className="title">Sign In</div>
+                    <div className="title">Enter email and address</div>
                             {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
                 </div>
             
