@@ -7,8 +7,8 @@ import groceries from "./groceries.png";
 
 const Home = () => {
   const history = useHistory();
-  function link(category) {
-    console.log(category);
+  function factory(category) {
+    // console.log(category);
     history.push(`/Store/${category}`, { state: category });
   }
 
@@ -37,7 +37,7 @@ const Home = () => {
               <button
                 className="btn btn-link btn-sm mr-2"
                 style={{ fontSize: "20px" }}
-                onClick={() => link("groceries")}
+                onClick={() => factory("groceries")}
               >
                 Groceries
               </button>
@@ -61,7 +61,7 @@ const Home = () => {
               <button
                 className="btn btn-link btn-sm mr-2"
                 style={{ fontSize: "20px" }}
-                onClick={() => link("clothes")}
+                onClick={() => factory("clothes")}
               >
                 Clothes
               </button>
@@ -85,7 +85,7 @@ const Home = () => {
               <button
                 className="btn btn-link btn-sm mr-2"
                 style={{ fontSize: "20px" }}
-                onClick={() => link("tools")}
+                onClick={() => factory("tools")}
               >
                 Tools
               </button>
