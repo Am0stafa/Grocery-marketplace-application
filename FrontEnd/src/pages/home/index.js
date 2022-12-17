@@ -16,8 +16,8 @@ const Home = () => {
     <Layout title="Home" description="This is the Store page">
       <div>
         <div className="text-center mt-5">
-          <h1>Design Patterns Shop</h1>
-          <p>What do you want to shop for</p>
+          <h1>What do you want to shop for</h1>
+
           <div style={{ display: "flex" }}>
             <div
               className="card card-body"

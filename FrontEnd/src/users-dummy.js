@@ -16,3 +16,4 @@ const users = [
     role: "customer_service",
   },
 ];
+export default users;

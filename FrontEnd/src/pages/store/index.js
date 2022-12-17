@@ -52,7 +52,7 @@ const Store = () => {
           <h1>RabbitMart</h1>
           <p>This is the {category} Page.</p>
         </div>
-        <ProductsGrid state={category} />
+        <ProductsGrid />
       </div>
     </Layout>
   );
