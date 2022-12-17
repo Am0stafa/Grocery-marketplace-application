@@ -45,43 +45,17 @@ const Store = () => {
   const loc = useLocation();
   const category = loc.state.state;
 
-  if (category === "clothes") {
-    return (
-      <Layout title="Store" description="This is the Store page">
-        <div>
-          <div className="text-center mt-5">
-            <h1>RabbitMart</h1>
-            <p>This is the Store Page.</p>
-          </div>
-          <ClothesGrid />
+  return (
+    <Layout title="Store" description="This is the Store page">
+      <div>
+        <div className="text-center mt-5">
+          <h1>RabbitMart</h1>
+          <p>This is the {category} Page.</p>
         </div>
-      </Layout>
-    );
-  } else if (category === "tools") {
-    return (
-      <Layout title="Store" description="This is the Store page">
-        <div>
-          <div className="text-center mt-5">
-            <h1>RabbitMart</h1>
-            <p>This is the Store Page.</p>
-          </div>
-          <ToolsGrid />
-        </div>
-      </Layout>
-    );
-  } else if (category === "groceries") {
-    return (
-      <Layout title="Store" description="This is the Store page">
-        <div>
-          <div className="text-center mt-5">
-            <h1>RabbitMart</h1>
-            <p>This is the Store Page.</p>
-          </div>
-          <GroceriesGrid />
-        </div>
-      </Layout>
-    );
-  }
+        <ProductsGrid state={category} />
+      </div>
+    </Layout>
+  );
 };
 
 export default Store;
