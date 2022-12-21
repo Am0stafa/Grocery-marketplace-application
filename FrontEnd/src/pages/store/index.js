@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Layout from "../../components/Layout";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import ProductsGrid from "./ProductsGrid";
 import ToolsGrid from "./ToolsGrid";
 import GroceriesGrid from "./GroceriesGrid";
 import ClothesGrid from "./ClothesGrid";
@@ -45,17 +44,43 @@ const Store = () => {
   const loc = useLocation();
   const category = loc.state.state;
 
-  return (
-    <Layout title="Store" description="This is the Store page">
-      <div>
-        <div className="text-center mt-5">
-          <h1>RabbitMart</h1>
-          <p>This is the {category} Page.</p>
+  if (category === "clothes") {
+    return (
+      <Layout title="Store" description="This is the Store page">
+        <div>
+          <div className="text-center mt-5">
+            <h1>RabbitMart</h1>
+            <p>This is the {category} Page.</p>
+          </div>
+          <ClothesGrid />
         </div>
-        <ProductsGrid />
-      </div>
-    </Layout>
-  );
+      </Layout>
+    );
+  } else if (category === "groceries") {
+    return (
+      <Layout title="Store" description="This is the Store page">
+        <div>
+          <div className="text-center mt-5">
+            <h1>RabbitMart</h1>
+            <p>This is the {category} Page.</p>
+          </div>
+          <GroceriesGrid />
+        </div>
+      </Layout>
+    );
+  } else if (category === "tools") {
+    return (
+      <Layout title="Store" description="This is the Store page">
+        <div>
+          <div className="text-center mt-5">
+            <h1>RabbitMart</h1>
+            <p>This is the {category} Page.</p>
+          </div>
+          <ToolsGrid />
+        </div>
+      </Layout>
+    );
+  }
 };
 
 export default Store;
