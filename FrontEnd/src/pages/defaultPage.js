@@ -7,6 +7,13 @@ import Admin from "./admin";
 
 const DefaultPage = () => {
   const loc = useLocation();
+  if (!loc.state) {
+    return (
+      <>
+        <Home />
+      </>
+    );
+  }
   const category = loc.state.state;
   // const  products  = useAPI();
   // console.log(products)

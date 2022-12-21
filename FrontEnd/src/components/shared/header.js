@@ -9,12 +9,13 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link to="/Home">Store</Link>
+      <Link to="/default/user">Store</Link>
       <Link to="/My-Orders">My Orders</Link>
       <Link to="/cart">
         {" "}
         <CartIcon /> Cart ({itemCount})
       </Link>
+      <Link to="/">Logout</Link>
     </header>
   );
 };

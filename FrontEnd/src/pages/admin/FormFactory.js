@@ -1,22 +1,28 @@
 import React from "react";
 import Layout from "./Layout";
 import { Link, useHistory } from "react-router-dom";
-import add from "./add.jpg";
-import update from "./update.jpg";
-import remove from "./delete.png";
+import clothes from "./clothes.png";
+import tools from "./tools.png";
+import groceries from "./groceries.png";
+import { useLocation } from "react-router-dom";
 
-const Admin = () => {
+const FormFactory = () => {
+  const loc = useLocation();
+  const children = loc.state.state;
+  if (children === "remove") children = "delete";
   const history = useHistory();
-  function factory(action) {
+  function factory(category) {
     // console.log(category);
-    history.push(`/default/admin/FormFactory/${action}`, { state: action });
+    history.push(`/default/admin/${children}Form/${category}`, {
+      state: category,
+    });
   }
 
   return (
     <Layout title="Home" description="This is the Store page">
       <div>
         <div className="text-center mt-5">
-          <h1>What do you want to do?</h1>
+          <h1>What do you want to {children}</h1>
 
           <div style={{ display: "flex" }}>
             <div
@@ -30,16 +36,16 @@ const Admin = () => {
                   maxHeight: "200px",
                 }}
                 className="img-fluid"
-                src={add}
+                src={groceries}
                 alt="img"
               />
 
               <button
                 className="btn btn-link btn-sm mr-2"
                 style={{ fontSize: "20px" }}
-                onClick={() => factory("add")}
+                onClick={() => factory("groceries")}
               >
-                Add products
+                Groceries
               </button>
             </div>
 
@@ -54,16 +60,16 @@ const Admin = () => {
                   maxHeight: "200px",
                 }}
                 className="img-fluid"
-                src={update}
+                src={clothes}
                 alt="img"
               />
 
               <button
                 className="btn btn-link btn-sm mr-2"
                 style={{ fontSize: "20px" }}
-                onClick={() => factory("update")}
+                onClick={() => factory("clothes")}
               >
-                Update products
+                Clothes
               </button>
             </div>
 
@@ -78,16 +84,16 @@ const Admin = () => {
                   maxHeight: "200px",
                 }}
                 className="img-fluid"
-                src={remove}
+                src={tools}
                 alt="img"
               />
 
               <button
                 className="btn btn-link btn-sm mr-2"
                 style={{ fontSize: "20px" }}
-                onClick={() => factory("delete")}
+                onClick={() => factory("tools")}
               >
-                Delete products
+                Tools
               </button>
             </div>
           </div>
@@ -97,4 +103,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default FormFactory;

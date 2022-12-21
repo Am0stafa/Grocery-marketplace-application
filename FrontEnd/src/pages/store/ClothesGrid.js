@@ -14,8 +14,8 @@ const ProductsGrid = () => {
     async function fetchData() {
       try {
         const data = await axios.get(`https://outfits-api.vercel.app/outfits`);
-        setProducts(data.data.data.allProducts);
-        setSearch(data.data.data.allProducts);
+        setProducts(data.data.data);
+        setSearch(data.data.data);
       } catch (error) {
         console.log(error);
       }

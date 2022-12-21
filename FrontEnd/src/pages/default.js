@@ -7,9 +7,19 @@ import DefaultPage from "./defaultPage";
 
 const Default = () => {
   const loc = useLocation();
+  if (!loc.state) {
+    return (
+      <div>
+        <div className="text-center mt-5">
+          <h1>home</h1>
+          <p>This is the home Page.</p>
+        </div>
+        <DefaultPage />
+      </div>
+    );
+  }
   let Category = loc.state.state;
   if (Category === "user") Category = "Home";
-
   return (
     <div>
       <div className="text-center mt-5">
