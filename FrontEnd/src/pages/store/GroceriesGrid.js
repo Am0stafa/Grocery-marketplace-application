@@ -6,6 +6,7 @@ import { useAPI } from "../../contexts/ProductsContext";
 import axios from "axios";
 
 const ProductsGrid = () => {
+  const url = `https://groceries-api.vercel.app/groceries`;
   // const  products  = useAPI();
   // console.log(products)
   const [products, setProducts] = useState([]);
@@ -13,9 +14,7 @@ const ProductsGrid = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await axios.get(
-          `https://groceries-api.vercel.app/groceries`
-        );
+        const data = await axios.get(url);
         setProducts(data.data.data);
         setSearch(data.data.data);
       } catch (error) {
@@ -54,7 +53,9 @@ const ProductsGrid = () => {
       </div>
       <div className={styles.p__grid}>
         {search.map((product) => (
-          <ProductItem key={product._id} product={product} />
+          <ProductItem key={product._id} product={product}>
+            {url}
+          </ProductItem>
         ))}
       </div>
       <div className={styles.p__footer}></div>
