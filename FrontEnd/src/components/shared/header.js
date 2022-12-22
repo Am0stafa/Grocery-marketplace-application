@@ -20,6 +20,12 @@ const Header = () => {
         {" "}
         <CartIcon /> Cart ({itemCount})
       </Link>
+      <a
+        style={{ cursor: "pointer" }}
+        onClick={() => history.push("/user/complain", { state: "user" })}
+      >
+        Complain
+      </a>
       <Link to="/">Logout</Link>
     </header>
   );

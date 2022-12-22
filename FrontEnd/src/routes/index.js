@@ -11,6 +11,7 @@ import ViewProduct from "../pages/store/ViewProduct";
 import Login from "../pages/Login";
 import Default from "../pages/default";
 import FormFactory from "../pages/admin/FormFactory";
+import complaint from "../components/complaint";
 
 const Routes = () => {
   return (
@@ -24,6 +25,7 @@ const Routes = () => {
         <Route path="/My-Orders" component={About} />
         <Route path="/Store" component={Store} />
         <Route path="/Default" component={Default} />
+        <Route path="/user/complain" component={complaint} />
         <Route path="/cart" component={Cart} />
         <Route path="*" component={NotFound} />
         <Route path="/ViewProduct/:id" component={ViewProduct} />

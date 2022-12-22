@@ -6,7 +6,6 @@ import { formatNumber } from "../../helpers/utils";
 
 const ProductItem = ({ product, children }) => {
   const temp = children.substr(children.lastIndexOf("/") + 1);
-  console.log(product.isFrozen.toString());
   const { addProduct, cartItems, increase } = useCart();
 
   const isInCart = (product) => {
