@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { CartIcon } from "../icons";
 import styles from "./header.module.scss";
 
 const Header = () => {
   const { itemCount } = useContext(CartContext);
-
+  const history = useHistory();
   return (
     <header className={styles.header}>
-      <Link to="/default/user">Store</Link>
+      <a
+        style={{ cursor: "pointer" }}
+        onClick={() => history.push("/default/user", { state: "user" })}
+      >
+        Home
+      </a>
       <Link to="/My-Orders">My Orders</Link>
       <Link to="/cart">
         {" "}

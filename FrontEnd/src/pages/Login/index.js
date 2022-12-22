@@ -25,7 +25,7 @@ const Login = () => {
     const userData = users.find(
       (u) => u.username === user && u.password === pwd
     );
-    console.log(userData);
+    // console.log(userData);
     if (!userData) {
       setErrMsg("Incorrect username or password");
     } else {

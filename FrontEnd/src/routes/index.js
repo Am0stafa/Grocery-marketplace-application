@@ -11,7 +11,6 @@ import ViewProduct from "../pages/store/ViewProduct";
 import Login from "../pages/Login";
 import Default from "../pages/default";
 import FormFactory from "../pages/admin/FormFactory";
-import admin from "../pages/admin";
 
 const Routes = () => {
   return (

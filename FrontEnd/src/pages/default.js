@@ -1,34 +1,33 @@
-import React, { useEffect } from "react";
-import Layout from "../components/Layout";
+import React from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
-
-import DefaultPage from "./defaultPage";
+import Home from "./home";
+import CustomerService from "./customer_service";
+import Admin from "./admin";
 
 const Default = () => {
   const loc = useLocation();
-  if (!loc.state) {
+
+  let category = loc.state.state;
+
+  if (category === "user") {
     return (
-      <div>
-        <div className="text-center mt-5">
-          <h1>home</h1>
-          <p>This is the home Page.</p>
-        </div>
-        <DefaultPage />
-      </div>
+      <>
+        <Home />
+      </>
+    );
+  } else if (category === "admin") {
+    return (
+      <>
+        <Admin />
+      </>
+    );
+  } else if (category === "customer_service") {
+    return (
+      <>
+        <CustomerService />
+      </>
     );
   }
-  let Category = loc.state.state;
-  if (Category === "user") Category = "Home";
-  return (
-    <div>
-      <div className="text-center mt-5">
-        <h1>{Category}</h1>
-        <p>This is the {Category} Page.</p>
-      </div>
-      <DefaultPage />
-    </div>
-  );
 };
 
 export default Default;
